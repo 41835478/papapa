@@ -63,7 +63,6 @@ function saveContent($, news_title){
       //根据需要将文本内容一段一段的写入文件中
       fs.appendFile('./data/' + news_title + '.txt', x, 'utf-8', function(err){
         if (err){console.log(err)};
-
       });
     }
   })

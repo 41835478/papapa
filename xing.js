@@ -115,10 +115,41 @@ function myDemo(){
     var tmp = $('div#mainbox .mcon h2').parent().parent().children('div.mtitle').find('div.more').children('a')
     var tmp2 = tmp[1];
     console.log(tmp2.attribs.href);
+    let tmp3 = tmp2.attribs.href;
 
-    //var nextLink =  webDomain + tmp;
-    //nextLink = encodeURI(nextLink);
-    //console.log('下一个地址：', nextLink);  
+    var nextLink =  `${webDomain}${tmp3}`;
+    nextLink = encodeURI(nextLink);
+    console.log('下一个地址:', nextLink);  
+
+    mySaveContent($, xTitle);
   });  
+
+
+//按需要保存所需要的内容到本地文件
+function mySaveContent($, news_title){
+
+  //分析内容
+  var tmp = $('div#mainbox .mcon h2').parent().children('p.f14')
+  //console.log(tmp);
+
+  $('div#mainbox .mcon h2').parent().children('p.f14').children().each(function(index, item){
+    var x = $(this);
+    var y='';
+    if ((x[0].type == 'tag' )&& (x[0].name == 'br') ){
+      console.log('');
+      y = '\r\n';
+    }
+    if((x[0].next) && (x[0].next.type == 'text' )){
+      console.log(x[0].next.data);
+      y = y + x[0].next.data;
+    }
+
+    //根据需要将文本内容一段一段的写入文件中
+    // fs.appendFile('./data/' + news_title + '.txt', y, 'utf-8', function(err){
+    //   if (err){console.log(err)};
+    // });
+    fs.appendFileSync('./data/' + news_title + '.txt', y, 'utf-8');
+  })
+}
 
 }
