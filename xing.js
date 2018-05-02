@@ -123,7 +123,7 @@ function myDemo(){
 
     mySaveContent($, xTitle);
   });  
-
+}
 
 //按需要保存所需要的内容到本地文件
 function mySaveContent($, news_title){
@@ -152,4 +152,4 @@ function mySaveContent($, news_title){
   })
 }
 
-}
+

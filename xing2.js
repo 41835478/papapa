@@ -1,6 +1,7 @@
 //next.txt
 //王  http://xing.911cha.com/NXZl.html
 var nextFile = './next.txt';
+var completeFile = './complete.txt';
 var webDomain = 'http://xing.911cha.com/'
 
 var fs=require('fs');  
